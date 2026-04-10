@@ -1,0 +1,7 @@
+{
+  "name": "CHECKOUT",
+  "description": "Full-stack asset management with barcode scanning, Assetbots integration, and automated overdue alerts.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

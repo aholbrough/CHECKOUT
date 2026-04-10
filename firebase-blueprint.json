@@ -1,0 +1,37 @@
+{
+  "entities": {
+    "AssetLog": {
+      "title": "Asset Log",
+      "description": "Logs of barcode scans and actions sent to Assetbots.",
+      "type": "object",
+      "properties": {
+        "barcode": { "type": "string", "description": "The scanned barcode." },
+        "action": { "type": "string", "enum": ["check-in", "check-out"], "description": "The action performed." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the scan occurred." },
+        "status": { "type": "string", "description": "Result of the Assetbots API call." },
+        "userId": { "type": "string", "description": "UID of the user who performed the action." }
+      },
+      "required": ["barcode", "action", "timestamp", "userId"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Application user profile.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["admin", "user"] }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/logs/{logId}": {
+      "schema": "AssetLog",
+      "description": "Collection of asset scan logs."
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles."
+    }
+  }
+}
